@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/06/2021, 10:53:03 PM
+    Author     : Carlo
+*/
+.titulo{
+    text-align: center;
+}
+.btn{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 2em;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #657F6F;
+    border-color: #d8d8d8;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 35px;
+}
+.btn:hover{
+    background-color: #8DBDA0;
+}
+.btn2{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 162px;
+    padding-right: 162px;
+    background-color: #657F6F;
+    border-color: #d8d8d8;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 35px;
+}
+.btn2:hover{
+    background-color: #8DBDA0;
+}
+.btn3{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 156px;
+    padding-right: 156px;
+    background-color: #657F6F;
+    border-color: #d8d8d8;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 35px;
+}
+.btn3:hover{
+    background-color: #8DBDA0;
+}
+form{
+    padding: 60px;
+    max-width: 400px;
+    background-color: #E7E7E7;
+    margin: 0 auto;
+}
+form input{
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+    border: none; 
+    color: #525c66; 
+    font-size: 1em;
+    resize: horizontal;
+}
+img{
+    margin: auto;
+    margin-bottom: 2em;
+    display: block;
+    
+}
+.inicio{
+    position: relative;
+}
+.inicio2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
