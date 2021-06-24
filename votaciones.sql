@@ -1,0 +1,386 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versión del servidor:         10.5.9-MariaDB - mariadb.org binary distribution
+-- SO del servidor:              Win64
+-- HeidiSQL Versión:             11.0.0.5919
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Volcando estructura de base de datos para votaciones
+CREATE DATABASE IF NOT EXISTS `votaciones` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `votaciones`;
+
+-- Volcando estructura para tabla votaciones.candidatos
+CREATE TABLE IF NOT EXISTS `candidatos` (
+  `idCandidato` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `municipio` varchar(45) DEFAULT NULL,
+  `distrito` varchar(45) DEFAULT NULL,
+  `puesto` varchar(45) NOT NULL,
+  `partidoPolitico_idPartidoPolitico` int(11) NOT NULL,
+  PRIMARY KEY (`idCandidato`,`partidoPolitico_idPartidoPolitico`),
+  KEY `fk_candidatos_partidoPolitico_idx` (`partidoPolitico_idPartidoPolitico`),
+  CONSTRAINT `FK_candidatos_partidopolitico` FOREIGN KEY (`partidoPolitico_idPartidoPolitico`) REFERENCES `partidopolitico` (`idPartidoPolitico`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='	';
+
+-- Volcando datos para la tabla votaciones.candidatos: ~26 rows (aproximadamente)
+/*!40000 ALTER TABLE `candidatos` DISABLE KEYS */;
+INSERT INTO `candidatos` (`idCandidato`, `nombre`, `municipio`, `distrito`, `puesto`, `partidoPolitico_idPartidoPolitico`) VALUES
+	(1, 'ROCIO ACOSTA CERVANTES', 'Tonala', NULL, 'Presidente', 1),
+	(2, 'EDGAR OSWALDO BAÑALES OROZCO', 'Tonala', NULL, 'Presidente', 2),
+	(3, 'ERIKA FABIOLA MAGAÑA RAMIREZ', 'Tonala', NULL, 'Presidente', 3),
+	(4, 'MANUEL NAJERA MARTINEZ', 'Tonala', NULL, 'Presidente', 4),
+	(5, 'JOSE DE JESUS GUZMAN GARCIA', 'Tonala', NULL, 'Presidente', 5),
+	(6, 'ANA PRISCILA GONZALEZ GARCIA', 'Tonala', NULL, 'Presidente', 6),
+	(7, 'SERGIO ARMANDO CHAVEZ DAVALOS', 'Tonala', NULL, 'Presidente', 7),
+	(8, 'DULCE ERIKA VAZQUEZ PEREZ', 'Tonala', NULL, 'Presidente', 8),
+	(9, 'ELIZABETH QUINTERO ROJAS', 'Tonala', NULL, 'Presidente', 9),
+	(10, 'JUAN CARLOS VILLARREAL SALAZAR', 'Tonala', NULL, 'Presidente', 10),
+	(11, 'JOSE ENRIQUE DIAZ MARTINEZ', 'Tonala', NULL, 'Presidente', 11),
+	(12, 'JUAN ESTEBAN RODRIGUEZ RODRIGUEZ', 'Tonala', NULL, 'Presidente', 12),
+	(13, 'LUZ ELENA GOMEZ OROZCO', 'Tonala', NULL, 'Presidente', 13),
+	(14, 'MARTHA PATRICIA BERNAL DELGADO', NULL, '07', 'Diputado', 1),
+	(15, 'MARCOS ARANA BARBA', NULL, '07', 'Diputado', 2),
+	(16, 'ERIKA AGUILAR', NULL, '07', 'Diputado', 3),
+	(17, 'MA GUADALUPE HERNANDEZ MARTINEZ', NULL, '07', 'Diputado', 4),
+	(18, 'MARIO ALBERTO REYNA BUSTOS', NULL, '07', 'Diputado', 5),
+	(19, 'MAGALY FIGUEROA LOPEZ', NULL, '07', 'Diputado', 6),
+	(20, 'CLAUDIA GARCIA HERNANDEZ', NULL, '07', 'Diputado', 7),
+	(21, 'ISMAEL MIRANDA ORNELAS', NULL, '07', 'Diputado', 8),
+	(22, 'JUAN MANUEL AVILA CASTRO', NULL, '07', 'Diputado', 9),
+	(23, 'SAMIR SARWERZIDE DE LA TORRE LEYVA', NULL, '07', 'Diputado', 10),
+	(24, 'AHZEEL MEDRANO MONTAÑO', NULL, '07', 'Diputado', 11),
+	(25, 'KAREN ALEJANDRA LIMON VARGAS', NULL, '07', 'Diputado', 12),
+	(26, 'XOCHITL MENDOZA HERNANDEZ', NULL, '07', 'Diputado', 13);
+/*!40000 ALTER TABLE `candidatos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla votaciones.casilla
+CREATE TABLE IF NOT EXISTS `casilla` (
+  `idCasilla` int(11) NOT NULL AUTO_INCREMENT,
+  `tipoCasilla` varchar(50) NOT NULL,
+  `idSeccion` int(11) NOT NULL,
+  `usuarios_Idusuarios` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idCasilla`),
+  KEY `FK_casilla_seccion` (`idSeccion`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla votaciones.casilla: ~25 rows (aproximadamente)
+/*!40000 ALTER TABLE `casilla` DISABLE KEYS */;
+INSERT INTO `casilla` (`idCasilla`, `tipoCasilla`, `idSeccion`, `usuarios_Idusuarios`) VALUES
+	(1, 'Contigua 01', 1, NULL),
+	(2, 'Contigua 02', 1, NULL),
+	(3, 'Contigua 03', 1, NULL),
+	(4, 'Contigua 04', 1, NULL),
+	(5, 'Contigua 05', 1, NULL),
+	(6, 'Contigua 01', 2, NULL),
+	(7, 'Contigua 02', 2, NULL),
+	(8, 'Contigua 03', 2, NULL),
+	(9, 'Contigua 04', 2, NULL),
+	(10, 'Contigua 05', 2, NULL),
+	(11, 'Contigua 01', 3, NULL),
+	(12, 'Contigua 02', 3, NULL),
+	(13, 'Contigua 03', 3, NULL),
+	(14, 'Contigua 04', 3, NULL),
+	(15, 'Contigua 05', 3, NULL),
+	(16, 'Contigua 01', 4, NULL),
+	(17, 'Contigua 02', 4, NULL),
+	(18, 'Contigua 03', 4, NULL),
+	(19, 'Contigua 04', 4, NULL),
+	(20, 'Contigua 05', 4, NULL),
+	(21, 'Contigua 01', 5, NULL),
+	(22, 'Contigua 02', 5, NULL),
+	(23, 'Contigua 03', 5, NULL),
+	(24, 'Contigua 04', 5, NULL),
+	(25, 'Contigua 05', 5, NULL);
+/*!40000 ALTER TABLE `casilla` ENABLE KEYS */;
+
+-- Volcando estructura para tabla votaciones.casilla_has_candidatos
+CREATE TABLE IF NOT EXISTS `casilla_has_candidatos` (
+  `idCasilla` int(11) NOT NULL,
+  `idCandidato` int(11) NOT NULL,
+  `votosCasilla` int(11) NOT NULL,
+  KEY `FK_casilla_has_candidatos_casilla` (`idCasilla`),
+  KEY `FK_casilla_has_candidatos_candidatos` (`idCandidato`),
+  CONSTRAINT `FK_casilla_has_candidatos_candidatos` FOREIGN KEY (`idCandidato`) REFERENCES `candidatos` (`idCandidato`),
+  CONSTRAINT `FK_casilla_has_candidatos_casilla` FOREIGN KEY (`idCasilla`) REFERENCES `casilla` (`idCasilla`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla votaciones.casilla_has_candidatos: ~83 rows (aproximadamente)
+/*!40000 ALTER TABLE `casilla_has_candidatos` DISABLE KEYS */;
+INSERT INTO `casilla_has_candidatos` (`idCasilla`, `idCandidato`, `votosCasilla`) VALUES
+	(1, 3, 45),
+	(1, 4, 45),
+	(1, 5, 5),
+	(2, 5, 10),
+	(3, 5, 10),
+	(15, 14, 1),
+	(15, 15, 2),
+	(15, 16, 3),
+	(15, 17, 13),
+	(15, 18, 5),
+	(15, 19, 10),
+	(15, 20, 6),
+	(15, 21, 7),
+	(15, 22, 12),
+	(15, 23, 4),
+	(15, 24, 9),
+	(15, 25, 11),
+	(15, 26, 8),
+	(10, 14, 1),
+	(10, 15, 2),
+	(10, 16, 3),
+	(10, 17, 13),
+	(10, 18, 5),
+	(10, 19, 10),
+	(10, 20, 6),
+	(10, 21, 7),
+	(10, 22, 12),
+	(10, 23, 4),
+	(10, 24, 9),
+	(10, 25, 11),
+	(10, 26, 8),
+	(12, 1, 5),
+	(12, 2, 4),
+	(12, 3, 7),
+	(12, 4, 1),
+	(12, 5, 9),
+	(12, 6, 5),
+	(12, 7, 41),
+	(12, 8, 2),
+	(12, 9, 9),
+	(12, 10, 8),
+	(12, 11, 4),
+	(12, 12, 78),
+	(12, 13, 3),
+	(12, 1, 5),
+	(12, 2, 4),
+	(12, 3, 7),
+	(12, 4, 1),
+	(12, 5, 9),
+	(12, 6, 5),
+	(12, 7, 41),
+	(12, 8, 2),
+	(12, 9, 9),
+	(12, 10, 8),
+	(12, 11, 4),
+	(12, 12, 78),
+	(12, 13, 3),
+	(14, 14, 1),
+	(14, 15, 2),
+	(14, 16, 3),
+	(14, 17, 13),
+	(14, 18, 5),
+	(14, 19, 10),
+	(14, 20, 6),
+	(14, 21, 7),
+	(14, 22, 12),
+	(14, 23, 4),
+	(14, 24, 9),
+	(14, 25, 11),
+	(14, 26, 8),
+	(15, 14, 5),
+	(15, 15, 8),
+	(15, 16, 5),
+	(15, 17, 12),
+	(15, 18, 4),
+	(15, 19, 1221),
+	(15, 20, 21),
+	(15, 21, 12),
+	(15, 22, 12),
+	(15, 23, 5),
+	(15, 24, 21),
+	(15, 25, 12),
+	(15, 26, 21),
+	(1, 1, 3),
+	(1, 2, 7),
+	(1, 3, 9),
+	(1, 4, 6),
+	(1, 5, 9),
+	(1, 6, 7),
+	(1, 7, 4),
+	(1, 8, 3),
+	(1, 9, 3),
+	(1, 10, 4),
+	(1, 11, 6),
+	(1, 12, 1),
+	(1, 13, 4),
+	(1, 1, 3),
+	(1, 2, 7),
+	(1, 3, 9),
+	(1, 4, 6),
+	(1, 5, 9),
+	(1, 6, 7),
+	(1, 7, 4),
+	(1, 8, 3),
+	(1, 9, 3),
+	(1, 10, 4),
+	(1, 11, 6),
+	(1, 12, 1),
+	(1, 13, 4),
+	(1, 14, 8),
+	(1, 15, 5),
+	(1, 16, 1),
+	(1, 17, 1),
+	(1, 18, 9),
+	(1, 19, 8),
+	(1, 20, 1),
+	(1, 21, 1),
+	(1, 22, 6),
+	(1, 23, 3),
+	(1, 24, 4),
+	(1, 25, 2),
+	(1, 26, 3),
+	(2, 1, 1),
+	(2, 2, 0),
+	(2, 3, 0),
+	(2, 4, 0),
+	(2, 5, 0),
+	(2, 6, 0),
+	(2, 7, 0),
+	(2, 8, 0),
+	(2, 9, 0),
+	(2, 10, 0),
+	(2, 11, 0),
+	(2, 12, 0),
+	(2, 13, 0),
+	(2, 1, -4),
+	(2, 2, 7),
+	(2, 3, 0),
+	(2, 4, 0),
+	(2, 5, 0),
+	(2, 6, 0),
+	(2, 7, 0),
+	(2, 8, 0),
+	(2, 9, 0),
+	(2, 10, 0),
+	(2, 11, 0),
+	(2, 12, 0),
+	(2, 13, 0),
+	(3, 1, -9),
+	(3, 2, 0),
+	(3, 3, 0),
+	(3, 4, 0),
+	(3, 5, 0),
+	(3, 6, 0),
+	(3, 7, 0),
+	(3, 8, 0),
+	(3, 9, 0),
+	(3, 10, 0),
+	(3, 11, 0),
+	(3, 12, 0),
+	(3, 13, 0),
+	(2, 1, -9),
+	(2, 2, 0),
+	(2, 3, 0),
+	(2, 4, 0),
+	(2, 5, 0),
+	(2, 6, 0),
+	(2, 7, 0),
+	(2, 8, 0),
+	(2, 9, 0),
+	(2, 10, 0),
+	(2, 11, 0),
+	(2, 12, 0),
+	(2, 13, 0),
+	(3, 1, 9),
+	(3, 2, 0),
+	(3, 3, 0),
+	(3, 4, 0),
+	(3, 5, 0),
+	(3, 6, 0),
+	(3, 7, 0),
+	(3, 8, 0),
+	(3, 9, 0),
+	(3, 10, 0),
+	(3, 11, 0),
+	(3, 12, 0),
+	(3, 13, 0),
+	(1, 1, 5),
+	(1, 2, 6),
+	(1, 3, 2),
+	(1, 4, 1),
+	(1, 5, 4),
+	(1, 6, 4),
+	(1, 7, 2),
+	(1, 8, 4),
+	(1, 9, 5),
+	(1, 10, 1),
+	(1, 11, 6),
+	(1, 12, 4),
+	(1, 13, 5),
+	(3, 1, 5),
+	(3, 2, 4),
+	(3, 3, 1),
+	(3, 4, 3),
+	(3, 5, 6),
+	(3, 6, 2),
+	(3, 7, 9),
+	(3, 8, 8),
+	(3, 9, 3),
+	(3, 10, 3),
+	(3, 11, 1),
+	(3, 12, 3),
+	(3, 13, 7);
+/*!40000 ALTER TABLE `casilla_has_candidatos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla votaciones.partidopolitico
+CREATE TABLE IF NOT EXISTS `partidopolitico` (
+  `idPartidoPolitico` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idPartidoPolitico`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla votaciones.partidopolitico: ~13 rows (aproximadamente)
+/*!40000 ALTER TABLE `partidopolitico` DISABLE KEYS */;
+INSERT INTO `partidopolitico` (`idPartidoPolitico`, `nombre`) VALUES
+	(1, 'PAN'),
+	(2, 'PRI'),
+	(3, 'PRD'),
+	(4, 'PV'),
+	(5, 'PT'),
+	(6, 'MC'),
+	(7, 'MORENA'),
+	(8, 'SOMOS'),
+	(9, 'PES'),
+	(10, 'HAGAMOS'),
+	(11, 'FUTURO'),
+	(12, 'RSP'),
+	(13, 'FUERZA MEXICO');
+/*!40000 ALTER TABLE `partidopolitico` ENABLE KEYS */;
+
+-- Volcando estructura para tabla votaciones.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `correo` varchar(45) NOT NULL,
+  `contrasena` varchar(45) NOT NULL,
+  `domicilio` varchar(90) NOT NULL,
+  `colonia` varchar(45) NOT NULL,
+  `codigoPostal` varchar(45) NOT NULL,
+  `municipio` varchar(45) NOT NULL,
+  `telefono` varchar(45) NOT NULL,
+  `tipoUsuario` varchar(45) NOT NULL,
+  `aceptado` varchar(5) NOT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla votaciones.usuarios: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `correo`, `contrasena`, `domicilio`, `colonia`, `codigoPostal`, `municipio`, `telefono`, `tipoUsuario`, `aceptado`) VALUES
+	(1, 'admin', 'admin', 'admin@admin.com', '246810', 'admin', 'admin', '00000', 'admin', '0000000000', 'Capturista', 'si'),
+	(2, 'Ulises', 'Gutierrez', 'ulises@gmail.com', '123456', 'Villa Ahumada', 'Francisco Villa', '45402', 'Tonala', '1234567890', 'Capturista', 'si'),
+	(3, 'Carlos', 'Figueroa', 'carlos@gmail.com', '123456', 'El Zapote', 'El salto', '45402', 'Tonala', '3312345678', 'Capturista', 'si'),
+	(4, 'Noe', 'Sanchez', 'noe@gmail.com', '123456', 'El Zapote', 'El salto', '45402', 'Tonala', '1412412444', 'Capturista', 'si'),
+	(5, 'Moy', 'Contreras', 'moy@gmail.com', '123456', 'Tonaland', 'New York', '55555', 'TonaYork', '3333333333', 'Capturista', 'si');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
