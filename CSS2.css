@@ -1,0 +1,92 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/06/2021, 05:29:28 PM
+    Author     : Carlo
+*/
+
+h1{
+    text-align: center;
+}
+table {
+   width: 100%;
+   border: 1px solid #000;
+}
+th, td {
+   width: 8%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
+th {
+   background: #eee;
+}
+.btn{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 5em;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #657F6F;
+    border-color: #d8d8d8;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 35px;
+}
+.btn:hover{
+    background-color: #8DBDA0;
+}
+.btn2{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ffffff;
+    margin-top: 1em;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #657F6F;
+    border-color: #d8d8d8;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 35px;
+}
+.btn2:hover{
+    background-color: #8DBDA0;
+}
+nav {
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+li {
+  float: right;
+  display: inline;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #000;
+}
+li a:hover {
+  background-color: #FAF6F6;
+}
